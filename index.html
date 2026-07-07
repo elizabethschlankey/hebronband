@@ -6,7 +6,6 @@
 <title>Hebron Band Percussion — Bake Sale</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
   :root{
     --navy: #1E2A78;
@@ -51,6 +50,15 @@
   .hero::before{ width:320px; height:320px; top:-190px; left:-110px; }
   .hero::after{ width:200px; height:200px; bottom:-130px; right:-60px; }
 
+  .hero-bg{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
   .logo{
     max-width: 280px;
     width: 70%;
@@ -83,47 +91,6 @@
     position: relative;
   }
 
-  /* ---------- QR "drumhead" ---------- */
-  .drumhead-wrap{
-    position: relative;
-    width: 220px;
-    height: 220px;
-    margin: 0 auto 14px;
-  }
-  .drumhead-rim{
-    position:absolute; inset:0;
-    border-radius:50%;
-    background: #fff;
-    box-shadow:
-      0 0 0 3px var(--silver),
-      0 0 0 8px var(--navy),
-      0 14px 26px rgba(14,15,18,0.18);
-  }
-  .drumhead-rim .tension{
-    position:absolute;
-    width: 9px; height: 9px;
-    background: var(--blue);
-    border-radius:50%;
-    box-shadow: 0 0 0 2px var(--silver);
-  }
-  #qr-slot{
-    position:absolute;
-    top:50%; left:50%;
-    transform: translate(-50%,-50%);
-    padding: 10px;
-    background: #fff;
-    border-radius: 8px;
-  }
-  #qr-slot img, #qr-slot canvas{ display:block; }
-  .scan-caption{
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--navy);
-    font-weight: 700;
-    position: relative;
-  }
-
   /* ---------- MAIN ---------- */
   main{
     max-width: 560px;
@@ -134,31 +101,37 @@
   .amount-section{
     text-align:center;
     margin-bottom: 30px;
+    background: #fff;
+    border: 1px solid var(--silver-line);
+    border-top: 4px solid var(--navy);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    padding: 30px 24px 32px;
   }
   .amount-section .label{
-    font-size: 13px;
+    font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.16em;
     color: var(--navy);
     font-weight: 700;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
   .amount-grid{
     display:flex;
-    gap: 10px;
+    gap: 14px;
     justify-content:center;
     flex-wrap: wrap;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
   }
   .amount-btn{
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
+    font-size: 28px;
     letter-spacing: 0.03em;
     background: #fff;
     border: 2px solid var(--navy);
     color: var(--navy);
-    padding: 10px 22px;
-    border-radius: 10px;
+    padding: 16px 30px;
+    border-radius: 12px;
     cursor: pointer;
     transition: transform 0.12s ease, background 0.12s ease, color 0.12s ease;
   }
@@ -172,17 +145,17 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    gap: 6px;
-    margin-top: 6px;
+    gap: 8px;
+    margin-top: 8px;
   }
-  .custom-amount span{ font-size:20px; font-weight:600; color: var(--navy); }
+  .custom-amount span{ font-size:24px; font-weight:600; color: var(--navy); }
   .custom-amount input{
-    width: 110px;
-    font-size: 18px;
+    width: 140px;
+    font-size: 22px;
     font-family:'Inter',sans-serif;
     font-weight:600;
-    padding: 9px 10px;
-    border-radius: 8px;
+    padding: 13px 12px;
+    border-radius: 10px;
     border: 2px solid var(--navy);
     background:#fff;
     color: var(--ink);
@@ -360,21 +333,38 @@
 <body>
 
 <div class="hero">
+  <svg class="hero-bg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <circle cx="130" cy="120" r="95" fill="none" stroke="#1E2A78" stroke-width="4"/>
+    <circle cx="130" cy="120" r="70" fill="none" stroke="#C7C9D4" stroke-width="2"/>
+    <g stroke="#1E2A78" stroke-width="3">
+      <line x1="130" y1="25" x2="130" y2="10"/>
+      <line x1="130" y1="215" x2="130" y2="230"/>
+      <line x1="35" y1="120" x2="20" y2="120"/>
+      <line x1="225" y1="120" x2="240" y2="120"/>
+      <line x1="63" y1="53" x2="52" y2="42"/>
+      <line x1="197" y1="53" x2="208" y2="42"/>
+      <line x1="63" y1="187" x2="52" y2="198"/>
+      <line x1="197" y1="187" x2="208" y2="198"/>
+    </g>
+
+    <circle cx="420" cy="230" r="68" fill="none" stroke="#1E2A78" stroke-width="4"/>
+    <circle cx="420" cy="230" r="68" fill="none" stroke="#C7C9D4" stroke-width="1.5" stroke-dasharray="4 6"/>
+    <line x1="330" y1="150" x2="480" y2="300" stroke="#0225C7" stroke-width="6" stroke-linecap="round"/>
+    <line x1="480" y1="150" x2="330" y2="300" stroke="#0225C7" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="330" cy="150" r="7" fill="#0225C7"/>
+    <circle cx="480" cy="150" r="7" fill="#0225C7"/>
+
+    <ellipse cx="150" cy="470" rx="120" ry="26" fill="none" stroke="#1E2A78" stroke-width="4"/>
+    <ellipse cx="150" cy="470" rx="86" ry="16" fill="none" stroke="#C7C9D4" stroke-width="2"/>
+    <line x1="150" y1="470" x2="150" y2="560" stroke="#1E2A78" stroke-width="4"/>
+
+    <circle cx="490" cy="470" r="50" fill="none" stroke="#1E2A78" stroke-width="3"/>
+    <circle cx="490" cy="470" r="34" fill="none" stroke="#C7C9D4" stroke-width="1.5"/>
+  </svg>
   <img class="logo" src="hebron-logo.png" alt="Hebron Band logo">
   <p class="eyebrow">Percussion</p>
   <h2>Bake Sale</h2>
   <p class="blurb">Every dollar goes straight to new percussion gear and travel for the section. Thanks for supporting the drumline — pick an amount below and pay however's easiest.</p>
-
-  <div class="drumhead-wrap">
-    <div class="drumhead-rim">
-      <div class="tension" style="top:6px; left:50%; transform:translateX(-50%);"></div>
-      <div class="tension" style="bottom:6px; left:50%; transform:translateX(-50%);"></div>
-      <div class="tension" style="left:6px; top:50%; transform:translateY(-50%);"></div>
-      <div class="tension" style="right:6px; top:50%; transform:translateY(-50%);"></div>
-      <div id="qr-slot"></div>
-    </div>
-  </div>
-  <p class="scan-caption">Scan to open on your phone</p>
 </div>
 
 <main>
@@ -387,7 +377,7 @@
     </div>
     <div class="custom-amount">
       <span>$</span>
-      <input type="number" id="custom-amount" min="1" step="1" placeholder="Other amount">
+      <input type="number" id="custom-amount" min="1" step="1" placeholder="Donate">
     </div>
   </section>
 
@@ -501,16 +491,6 @@
       confirmEl.textContent = number + ' — copy this manually.';
     }
     setTimeout(() => confirmEl.textContent = '', 4000);
-  });
-
-  // ---- QR code: encodes this page's own URL ----
-  new QRCode(document.getElementById('qr-slot'), {
-    text: window.location.href,
-    width: 168,
-    height: 168,
-    colorDark: '#1E2A78',
-    colorLight: '#ffffff',
-    correctLevel: QRCode.CorrectLevel.M
   });
 </script>
 
